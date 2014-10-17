@@ -18,7 +18,10 @@ public class Biergarten extends Standort{
 
 	public void ausschreiben(){
 		for(int i=0; i < spieler.length; i++){
-			spieler[i].biergartenAusschreibung(name, preis, id);
+			if(spieler[i].getX(i) - spieler[i].getRange(i) < pos_x && pos_x < spieler[i].getX(i) + spieler[i].getRange(i) 
+					&& spieler[i].getY(i) - spieler[i].getRange(i) < pos_y && pos_y < spieler[i].getY(i) + spieler[i].getRange(i)){
+				spieler[i].biergartenAusschreibung(name, preis, id);
+			}
 		}
 	}
 	
@@ -26,13 +29,17 @@ public class Biergarten extends Standort{
 		int gewinnerID = 10;
 		int angebot = 0;
 		for(int i=0; i < spieler.length; i++){
-			if(angebot < spieler[i].getBiergartenAngebot()){
-				if(spieler[i].getKontostand() > preis){	
-					gewinnerID = i;
-					angebot = spieler[i].getBiergartenAngebot();
-					}
-			}
+
+			if(spieler[i].getX(i) - spieler[i].getRange(i) < pos_x && pos_x < spieler[i].getX(i) + spieler[i].getRange(i) 
+					&& spieler[i].getY(i) - spieler[i].getRange(i) < pos_y && pos_y < spieler[i].getY(i) + spieler[i].getRange(i)){
+				if(angebot < spieler[i].getBiergartenAngebot()){
+					if(spieler[i].getKontostand() > preis){	
+						gewinnerID = i;
+						angebot = spieler[i].getBiergartenAngebot();
+						}
+				}
 			spieler[i].setAngebotBiergarten(0);
+			}
 		}
 		if(gewinnerID != 10){
 			System.out.println(gewinnerID);

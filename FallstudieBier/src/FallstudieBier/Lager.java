@@ -6,6 +6,11 @@ public class Lager {
 	private int rohstoffe;
 	private int bier;
 	
+	public Lager(){
+		kapazitaet = 2500;
+		rohstoffe = 1000;
+		bier = 500;
+	}
 	
 	public int getKapazitaet() {
 		return kapazitaet;
@@ -33,9 +38,5 @@ public class Lager {
 
 
 	
-	public void Lager(){
-		kapazitaet = 2000;
-		rohstoffe = 1000;
-		bier = 500;
-	}
+	
 }

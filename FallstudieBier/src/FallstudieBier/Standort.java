@@ -2,26 +2,26 @@ package FallstudieBier;
 
 public class Standort {
 	
-	protected int pox_x;
+	protected int pos_x;
 	protected int pos_y;
 	protected String name;
 	protected Spieler besitzer;
 	protected Spieler[] spieler = new Spieler[4];
 	
-		public Standort(int pox_x, int pox_y, String name){
+		public Standort(int pos_x, int pos_y, String name){
 			this.pos_y = pos_y;
-			this.pox_x = pox_x;
+			this.pos_x = pos_x;
 			this.name = name;
 
 		
 		}
 
 		public int getPox_x() {
-			return pox_x;
+			return pos_x;
 		}
 
 		public void setPox_x(int pox_x) {
-			this.pox_x = pox_x;
+			this.pos_x = pox_x;
 		}
 
 		public int getPos_y() {

@@ -3,42 +3,36 @@ package FallstudieBier;
 public class Einmaliger_Lieferant extends Lieferant {
 
 	private int kapazitaet;
-	private String[] gebote = {"0,0", "0,0", "0,0", "0,0"};
+	Spieler[] spieler = new Spieler[4];
 
 	public Einmaliger_Lieferant(String name) {
 		super(name);		
 	}
 	
-	public void bieten(String spielerName, int gebot) {
-		for (int i = 0; i < gebote.length; i++) {
-				if (gebote[i].equals("0,0")) {
-					gebote[i] = spielerName + "," + gebot;
-					break;
-				}
-			
+	public void ausschreiben(){
+		for (int i = 0; i < spieler.length; i++) {
+			spieler[i].ELieferantAusschreibung(kapazitaet);
 		}
 	}
 	
-	public boolean auswerten(String spielerName){
-		int betrag = 0;
-		String gewinner = "";
-		
-		// Durchgehen der Gebote
-		for (int i = 0; i < gebote.length; i++) {
-			String[] split = gebote[i].split(",");
-			
-			// Ermitteln des Höchstbietenden
-			if (Integer.parseInt(split[1]) > betrag) {
-				betrag = Integer.parseInt(split[1]);
-				gewinner = split[0];
+	public void auswerten(){
+		int gewinnerID = 10;
+		int angebot = 0;
+		for(int i=0; i < spieler.length; i++){
+			if(angebot < spieler[i].getELieferantAngebot()){
+				if(spieler[i].getKontostand() > spieler[i].getELieferantAngebot()){	
+					gewinnerID = i;
+					angebot = spieler[i].getELieferantAngebot();
+					}
 			}
+		spieler[i].setELieferantAngebot(0);
 		}
-		if (spielerName.equals(gewinner)) {
-			return true;
-		} else {
-			return false;
-		}
+	if(gewinnerID != 10){
+		System.out.println(gewinnerID);
+		spieler[gewinnerID].zuschlagELieferant(kapazitaet, angebot);
 	}
+}
+
 	
 	// Getter und Setter
 	public int getKapazitaet() {
@@ -47,5 +41,9 @@ public class Einmaliger_Lieferant extends Lieferant {
 
 	public void setKapazitaet(int kapazitaet) {
 		this.kapazitaet = kapazitaet;
+	}
+	
+	public void setSpieler(Spieler[] spieler){
+		this.spieler = spieler;
 	}
 }

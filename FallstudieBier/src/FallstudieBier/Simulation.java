@@ -55,7 +55,13 @@ public class Simulation {
 		for(int i=0; i<15; i++){
 			supermarkt[i].setSpieler(spieler);
 		}
+		
+		einmaligerLieferant.setSpieler(spieler);
 	
+	}
+	
+	public void naechsteRunde(){
+	//Muss noch implementiert werden... Ich hab keine Lust mehr^^
 	}
 	
 	public Biergarten[] getBiergaerten(){
@@ -73,6 +79,18 @@ public class Simulation {
 	public Supermarkt[] getSupermarkt() {
 		// TODO Auto-generated method stub
 		return supermarkt;
+	}
+	
+	public DauerLieferant getDLieferant(){
+		return dauerLieferant;
+	}
+	
+	public Lager getLager(int i){
+		return spieler[i].getLager();
+	}
+	
+	public Einmaliger_Lieferant getEinmaligerL(){
+		return einmaligerLieferant;
 	}
 
 }

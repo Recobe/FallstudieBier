@@ -28,22 +28,28 @@ public class Supermarkt extends Standort{
 	}
 	
 	public void ausschreiben(){
+		
 		for(int i=0; i < spieler.length; i++){
-			spieler[i].supermarktAusschreibung(kaufkraft);
+			if(spieler[i].getX(i) - spieler[i].getRange(i) < pos_x && pos_x < spieler[i].getX(i) + spieler[i].getRange(i) 
+			&& spieler[i].getY(i) - spieler[i].getRange(i) < pos_y && pos_y < spieler[i].getY(i) + spieler[i].getRange(i)){
+				
+				spieler[i].supermarktAusschreibung(kaufkraft);
+			}
 		}
 	}
 	
 	public void auswerten(){
 		int gewinnerID = 10;
-		int angebot = 0;
+		int angebot = 99999999;
 		for(int i=0; i < spieler.length; i++){
-			if(angebot < spieler[i].getSupermarktAngebot()){
-				if(spieler[i].getKontostand() > spieler[i].getSupermarktAngebot()){	
-					gewinnerID = i;
-					angebot = spieler[i].getSupermarktAngebot();
+			if(spieler[i].getX(i) - spieler[i].getRange(i) < pos_x && pos_x < spieler[i].getX(i) + spieler[i].getRange(i) 
+					&& spieler[i].getY(i) - spieler[i].getRange(i) < pos_y && pos_y < spieler[i].getY(i) + spieler[i].getRange(i)){
+				if(angebot > spieler[i].getSupermarktAngebot()){	
+						gewinnerID = i;
+						angebot = spieler[i].getSupermarktAngebot();
 				}
+				spieler[i].setSupermarktAngebot(0);
 			}
-			spieler[i].setSupermarktAngebot(0);
 		}
 		if(gewinnerID != 10){
 			System.out.println("Das Supermarkt-Angebot geht an: " + gewinnerID);

@@ -3,19 +3,19 @@ package FallstudieBier;
 public class Brauerei extends Standort {
 
 	private int kapazitaet;
-	private int range;
+	private int range = 5;
 	private Spieler spieler;
+	//Kosten bitte beim Spieler dazuzählen, hier wird nur die Kapazitaet gespeichert!
 	
 	public Brauerei(int kapazitaet,  int pos_x, int pos_y, String name){
 		super(pos_x, pos_y, name);
 		this.kapazitaet = kapazitaet;
-		this.spieler = besitzer;
-		range = 5;
+		//this.spieler = besitzer;
 	}
 
-	public void herstellen(int menge){
-		spieler.einlagern(kapazitaet, "Bier");
-		spieler.einlagern(-kapazitaet, "Rohstoffe");		
+	public void herstellen(){
+		spieler.einlagern(-kapazitaet, "Rohstoffe");
+		spieler.einlagern(kapazitaet, "Bier");		
 	}
 	
 	public int getKapazität() {
@@ -32,7 +32,5 @@ public class Brauerei extends Standort {
 	
 	public int getRange(){
 		return range;
-	}
-	
-	
+	}	
 }

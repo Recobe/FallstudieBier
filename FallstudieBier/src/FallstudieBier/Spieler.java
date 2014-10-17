@@ -8,7 +8,7 @@ public class Spieler {
 	private float kontostand;
 	private boolean ist_am_zug;
 	private int flaschenProZug = 0;
-	private int kostenProZug = 0;
+	private float kostenProZug = 0;
 
 	private Lager meinLager;
 	private Supermarkt[] supermarkt;
@@ -21,7 +21,9 @@ public class Spieler {
 
 	private int angebotBiergarten = 0;
 	private int angebotSupermarkt = 0;
+	private int angebotELieferant = 0;
 	
+//Konstruktor	
 	public Spieler(String pName, Supermarkt[] supermarkt, Biergarten[] biergarten, Brauerei[] brauerei,
 				DauerLieferant dauerLieferant,	Einmaliger_Lieferant einmaligerLieferant){
 		
@@ -42,32 +44,39 @@ public class Spieler {
 		kontostand = 6000;
 		
 	}
-	
-	public void einkaufen(int pMenge){
-		float preis = DauerLieferant.liefern(pMenge);
-		kontostand = kontostand - preis;
-	}
-	
-	public void verkaufen(){
-		
-	}
-	
+//_____________________________________________________________________________________	
+
+//Einlagern	
 	public void einlagern(int pMenge, String pTyp){
 			if(pTyp.equals("Bier")){
-				int neuerBestand = meinLager.getBier()+pMenge;
-				meinLager.setBier(neuerBestand);	
+				if(meinLager.getKapazitaet() > meinLager.getBier() + meinLager.getRohstoffe() + pMenge){
+					int neuerBestand = meinLager.getBier()+pMenge;
+					meinLager.setBier(neuerBestand);
+				}
+				else{
+					int neuerBestand = meinLager.getBier() + (meinLager.getKapazitaet() - meinLager.getBier() - meinLager.getRohstoffe());
+					meinLager.setBier(neuerBestand);
+				}
 			}
 			else if(pTyp.equals("Rohstoffe")){
-				int neuerBestand = meinLager.getRohstoffe()+pMenge;
-				meinLager.setRohstoffe(neuerBestand);
+				if(meinLager.getKapazitaet() > meinLager.getBier() + meinLager.getRohstoffe() + pMenge){
+					int neuerBestand = meinLager.getRohstoffe()+pMenge;
+					meinLager.setRohstoffe(neuerBestand);
+				}
+				else{
+					System.out.println("Hier");
+					int neuerBestand = meinLager.getRohstoffe() + (meinLager.getKapazitaet() - meinLager.getBier() - meinLager.getRohstoffe());
+					meinLager.setRohstoffe(neuerBestand);
+				}
 			}
 			else if(pTyp.equals("Kapazitaet")){
 				int neuerBestand = meinLager.getKapazitaet()+pMenge;
 				meinLager.setKapazitaet(neuerBestand);
 			}
 	}
+//______________________________________________________________________________
 	
-
+//Biergarten_______________________________________________________________________
 	public void biergartenAusschreibung(String name2, int preis, int id) {
 		// TODO Auto-generated method stub
 		System.out.println(name2 +  " " + preis + " " + id);
@@ -91,11 +100,10 @@ public class Spieler {
 		kontostand = kontostand - preis;
 		this.flaschenProZug += flaschenProZug;
 	}
-	
-	public float getKontostand(){
-		return kontostand;
-	}
-	
+//___________________________________________________________________________________	
+
+
+//___________________________________________________________________________________
 	public void supermarktAusschreibung(int pMenge){
 		System.out.println(pMenge);		
 		//Weitergabe an GUI
@@ -115,6 +123,74 @@ public class Spieler {
 	public void zuschlagSupermarkt(int i, int kosten) {
 		// TODO Auto-generated method stub
 		flaschenProZug = flaschenProZug + i;
-		kostenProZug = kostenProZug + kosten;
+		kostenProZug = kostenProZug - kosten;
 	}
+//_____________________________________________________________________________________
+
+//DauerhafterLieferant
+	public void dLiefern(int pMenge){
+		//Wird von GUI aufgerufen!
+		float kosten = dauerLieferant.liefern(pMenge);
+		kontostand -= kosten;
+		einlagern(pMenge, "Rohstoffe");
+	}
+//____________________________________________________________________
+
+//Einmaliger Lieferant
+	public void ELieferantAusschreibung(int pMenge) {
+		// TODO Auto-generated method stub
+		System.out.println(pMenge);		
+		//Weitergabe an GUI
+	}
+	
+	public int getELieferantAngebot() {
+		// TODO Auto-generated method stub
+		return angebotELieferant;
+	}
+	
+	public void setELieferantAngebot(int pAngebot){
+		// Wird von GUI aufgerufen
+		angebotELieferant = pAngebot;
+	}
+	
+	public void zuschlagELieferant(int kapazitaet, int angebot) {
+		// TODO Auto-generated method stub
+		kontostand -= angebot;
+		einlagern(kapazitaet, "Rohstoffe");
+	}
+//________________________________________________________________________
+	
+//Get und Set
+	public Lager getLager(){
+		return meinLager;
+	}
+	
+	public float getKostenProZug(){
+		return kostenProZug;
+	}
+	
+	public int getFlaschenProZug(){
+		return flaschenProZug;
+	}
+	
+	public float getKontostand(){
+		return kontostand;
+	}
+	
+	public int getX(int i){
+		return brauerei[i].getPox_x();
+	}
+	
+	public int getY(int i){
+		return brauerei[i].getPos_y();
+	}
+	
+	public int getRange(int i){
+		return brauerei[i].getRange();
+	}
+	
+	public int getRohstoffe(){
+		return meinLager.getRohstoffe();
+	}
+		
 }
