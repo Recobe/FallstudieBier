@@ -30,13 +30,13 @@ public class Biergarten extends Standort{
 				if(spieler[i].getKontostand() > preis){	
 					gewinnerID = i;
 					angebot = spieler[i].getBiergartenAngebot();
-				}
+					}
 			}
 			spieler[i].setAnbgebotBiergarten(0);
 		}
 		if(gewinnerID != 10){
 			System.out.println(gewinnerID);
-			spieler[gewinnerID].zuschlagBiergarten(5, gewinnerID, preis);
+			spieler[gewinnerID].zuschlagBiergarten(5, gewinnerID, preis, angebot);
 			laufzeit = 12;
 		}
 	}

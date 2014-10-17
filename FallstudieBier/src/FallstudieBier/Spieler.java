@@ -85,10 +85,11 @@ public class Spieler {
 		angebotBiergarten = pAngebot;
 	}
 
-	public void zuschlagBiergarten(int i, int ID, int preis) {
+	public void zuschlagBiergarten(int i, int ID, int preis, int flaschenProZug) {
 		// TODO Auto-generated method stub
 		brauerei[ID].erhoeheRange(i);
 		kontostand = kontostand - preis;
+		this.flaschenProZug += flaschenProZug;
 	}
 	
 	public float getKontostand(){
@@ -114,6 +115,6 @@ public class Spieler {
 	public void zuschlagSupermarkt(int i, int kosten) {
 		// TODO Auto-generated method stub
 		flaschenProZug = flaschenProZug + i;
-		kostenProZug = kostenProZug + preis;
+		kostenProZug = kostenProZug + kosten;
 	}
 }

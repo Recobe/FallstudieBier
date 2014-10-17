@@ -27,13 +27,27 @@ public class Supermarkt extends Standort{
 		this.maxpreis = maxpreis;
 	}
 	
-	public int angebot_machen(){
-		int menge;
-		
-		return menge;
+	public void ausschreiben(){
+		for(int i=0; i < spieler.length; i++){
+			spieler[i].supermarktAusschreibung(kaufkraft);
+		}
 	}
 	
-	public Spieler angebot_auswerten(){
-		Spieler partner;
+	public void auswerten(){
+		int gewinnerID = 10;
+		int angebot = 0;
+		for(int i=0; i < spieler.length; i++){
+			if(angebot < spieler[i].getSupermarktAngebot()){
+				if(spieler[i].getKontostand() > spieler[i].getSupermarktAngebot()){	
+					gewinnerID = i;
+					angebot = spieler[i].getSupermarktAngebot();
+				}
+			}
+			spieler[i].setSupermarktAngebot();
+		}
+		if(gewinnerID != 10){
+			System.out.println("Das Supermarkt-Angebot geht an: " + gewinnerID);
+			spieler[gewinnerID].zuschlag(5, gewinnerID, preis);
+		}
 	}
 }
