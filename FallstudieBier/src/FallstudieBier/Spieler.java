@@ -80,7 +80,7 @@ public class Spieler {
 	}
 	
 	
-	public void setAnbgebotBiergarten(int pAngebot){
+	public void setAngebotBiergarten(int pAngebot){
 		// Wird von GUI aufgerufen
 		angebotBiergarten = pAngebot;
 	}

@@ -43,11 +43,11 @@ public class Supermarkt extends Standort{
 					angebot = spieler[i].getSupermarktAngebot();
 				}
 			}
-			spieler[i].setSupermarktAngebot();
+			spieler[i].setSupermarktAngebot(0);
 		}
 		if(gewinnerID != 10){
 			System.out.println("Das Supermarkt-Angebot geht an: " + gewinnerID);
-			spieler[gewinnerID].zuschlag(5, gewinnerID, preis);
+			spieler[gewinnerID].zuschlagSupermarkt(kaufkraft, angebot);
 		}
 	}
 }
