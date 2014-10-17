@@ -32,11 +32,11 @@ public class Biergarten extends Standort{
 					angebot = spieler[i].getBiergartenAngebot();
 				}
 			}
-			spieler[i].resetBiergartenAngebot();
+			spieler[i].setAnbgebotBiergarten(0);
 		}
 		if(gewinnerID != 10){
 			System.out.println(gewinnerID);
-			spieler[gewinnerID].zuschlag(5, gewinnerID, preis);
+			spieler[gewinnerID].zuschlagBiergarten(5, gewinnerID, preis);
 			laufzeit = 12;
 		}
 	}

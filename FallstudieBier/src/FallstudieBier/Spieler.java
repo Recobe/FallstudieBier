@@ -7,6 +7,8 @@ public class Spieler {
 	private int umsatz_ges;
 	private float kontostand;
 	private boolean ist_am_zug;
+	private int flaschenProZug = 0;
+	private int kostenProZug = 0;
 
 	private Lager meinLager;
 	private Supermarkt[] supermarkt;
@@ -77,16 +79,13 @@ public class Spieler {
 		return angebotBiergarten;
 	}
 	
-	public void resetBiergartenAngebot(){
-		angebotBiergarten = 0;
-	}
 	
 	public void setAnbgebotBiergarten(int pAngebot){
 		// Wird von GUI aufgerufen
 		angebotBiergarten = pAngebot;
 	}
 
-	public void zuschlag(int i, int ID, int preis) {
+	public void zuschlagBiergarten(int i, int ID, int preis) {
 		// TODO Auto-generated method stub
 		brauerei[ID].erhoeheRange(i);
 		kontostand = kontostand - preis;
@@ -96,8 +95,25 @@ public class Spieler {
 		return kontostand;
 	}
 	
-	public void supermarktAusschreibung(){
-		
+	public void supermarktAusschreibung(int pMenge){
+		System.out.println(pMenge);		
+		//Weitergabe an GUI
 	}
 
+	public int getSupermarktAngebot() {
+		// TODO Auto-generated method stub
+		return angebotSupermarkt;
+	}
+	
+	
+	public void setSupermarktAngebot(int pAngebot){
+		// Wird von GUI aufgerufen
+		angebotSupermarkt = pAngebot;
+	}
+
+	public void zuschlagSupermarkt(int i, int kosten) {
+		// TODO Auto-generated method stub
+		flaschenProZug = flaschenProZug + i;
+		kostenProZug = kostenProZug + preis;
+	}
 }
