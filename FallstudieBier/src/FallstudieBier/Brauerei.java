@@ -25,8 +25,10 @@ public class Brauerei extends Standort {
 	public void setKapazität(int kapazität) {
 		this.kapazitaet = kapazität;
 	}
-
-
+	
+	public void erhoeheRange(int i){
+		range = range + i;
+	}
 	
 	
 }

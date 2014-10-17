@@ -1,4 +1,4 @@
-package fallstudieGreg.git.first;
+package FallstudieBier;
 
 public class MainFrame extends javax.swing.JFrame {
 

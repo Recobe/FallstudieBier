@@ -28,7 +28,7 @@ public class Simulation {
 		for(int i = 0; i < 10; i++){
 			int kapazitaet = (int) (Math.random()*2000 + 500);
 			int preis = (int) (Math.random()*5000 + 1000);
-			biergarten[i] = new Biergarten(kapazitaet, preis, posX[i] - 2, posY[i] - 2, "Biergarten" + i);
+			biergarten[i] = new Biergarten(kapazitaet, preis, posX[i] - 2, posY[i] - 2, "Biergarten" + i, i);
 		}
 		
 		for(int i = 0; i < anzSpieler; i++){

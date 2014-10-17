@@ -16,7 +16,7 @@ public class Spieler {
 	private Einmaliger_Lieferant einmaligerLieferant;
 	private Skilltree[] skilltree; 
 	
-	private String aktBiergarten = "";
+	private int aktBiergartenID = 10;
 	private int preisBiergarten = 0;
 	private int angebotBiergarten = 0;
 	
@@ -67,10 +67,10 @@ public class Spieler {
 		
 	}
 
-	public void biergartenAusschreibung(String name2, int preis) {
+	public void biergartenAusschreibung(String name2, int preis, int id) {
 		// TODO Auto-generated method stub
 		//Weitergeben an GUI!
-		aktBiergarten = name2;
+		aktBiergartenID = id;
 		preisBiergarten = preis;
 	}
 
@@ -82,6 +82,11 @@ public class Spieler {
 	public void setAnbgebotBiergarten(int pAngebot){
 		// Wird von GUI aufgerufen
 		angebotBiergarten = pAngebot;
+	}
+
+	public void erhoeheRange(int i, int ID) {
+		// TODO Auto-generated method stub
+		brauerei[ID].erhoeheRange(i);
 	}
 
 }
