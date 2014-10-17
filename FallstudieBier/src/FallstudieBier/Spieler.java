@@ -18,7 +18,7 @@ public class Spieler {
 	
 	private int aktBiergartenID = 10;
 	private int preisBiergarten = 0;
-	private int angebotBiergarten = 0;
+	private int angebotBiergarten = 9999999;
 	
 	public Spieler(String pName, Supermarkt[] supermarkt, Biergarten[] biergarten, Brauerei[] brauerei,
 				DauerLieferant dauerLieferant,	Einmaliger_Lieferant einmaligerLieferant){
@@ -36,6 +36,8 @@ public class Spieler {
 		skilltree[0] = new Skilltree("Herstellung");
 		skilltree[1] = new Skilltree("Forschung");
 		skilltree[2] = new Skilltree("Marketing");
+		
+		kontostand = 6000;
 		
 	}
 	
@@ -85,9 +87,14 @@ public class Spieler {
 		angebotBiergarten = pAngebot;
 	}
 
-	public void erhoeheRange(int i, int ID) {
+	public void zuschlag(int i, int ID, int preis) {
 		// TODO Auto-generated method stub
 		brauerei[ID].erhoeheRange(i);
+		kontostand = kontostand - preis;
+	}
+	
+	public float getKontostand(){
+		return kontostand;
 	}
 
 }

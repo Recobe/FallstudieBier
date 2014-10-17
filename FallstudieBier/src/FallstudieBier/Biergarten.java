@@ -25,12 +25,17 @@ public class Biergarten extends Standort{
 		int gewinnerID = 10;
 		int angebot = 0;
 		for(int i=0; i < spieler.length; i++){
-			if(angebot > spieler[i].getBiergartenAngebot()){
-				gewinnerID = i;
-				angebot = spieler[i].getBiergartenAngebot();
+			if(angebot < spieler[i].getBiergartenAngebot()){
+				if(spieler[i].getKontostand() > preis){	
+					gewinnerID = i;
+					angebot = spieler[i].getBiergartenAngebot();
+				}
 			}
 		}
-		spieler[gewinnerID].erhoeheRange(5, gewinnerID);
+		if(gewinnerID != 10){
+			System.out.println(gewinnerID);
+			spieler[gewinnerID].zuschlag(5, gewinnerID, preis);
+		}
 	}
 	
 	public int getKapazitaet() {

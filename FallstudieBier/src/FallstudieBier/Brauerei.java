@@ -30,5 +30,9 @@ public class Brauerei extends Standort {
 		range = range + i;
 	}
 	
+	public int getRange(){
+		return range;
+	}
+	
 	
 }

@@ -61,5 +61,9 @@ public class Simulation {
 	public Spieler[] getSpieler(){
 		return spieler;
 	}
+	
+	public Brauerei[] getBrauerei(){
+		return brauerei;
+	}
 
 }
