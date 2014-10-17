@@ -20,8 +20,8 @@ public class BiergartenTest {
 		
 		biergarten[0].ausschreiben();
 		
-		spieler[0].setAnbgebotBiergarten(300);
-		spieler[1].setAnbgebotBiergarten(400);
+		spieler[0].setAngebotBiergarten(300);
+		spieler[1].setAngebotBiergarten(400);
 		
 		biergarten[0].auswerten();
 		

@@ -51,6 +51,10 @@ public class Simulation {
 		for(int i=0; i<10; i++){
 			biergarten[i].setSpieler(spieler);
 		}
+		
+		for(int i=0; i<15; i++){
+			supermarkt[i].setSpieler(spieler);
+		}
 	
 	}
 	
@@ -64,6 +68,11 @@ public class Simulation {
 	
 	public Brauerei[] getBrauerei(){
 		return brauerei;
+	}
+
+	public Supermarkt[] getSupermarkt() {
+		// TODO Auto-generated method stub
+		return supermarkt;
 	}
 
 }
