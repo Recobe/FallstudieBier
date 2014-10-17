@@ -6,7 +6,7 @@ public class Standort {
 	protected int pos_y;
 	protected String name;
 	protected Spieler besitzer;
-	protected Spieler[] spieler;
+	protected Spieler[] spieler = new Spieler[4];
 	
 		public Standort(int pox_x, int pox_y, String name){
 			this.pos_y = pos_y;
@@ -38,6 +38,10 @@ public class Standort {
 
 		public void setName(String name) {
 			this.name = name;
+		}
+		
+		public void setSpieler(Spieler[] spieler){
+			this.spieler = spieler;
 		}
 		
 }

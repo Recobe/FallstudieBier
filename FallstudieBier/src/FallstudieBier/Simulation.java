@@ -2,8 +2,8 @@ package FallstudieBier;
 
 public class Simulation {
 	int month;
-	Supermarkt[] supermarkt;
-	Biergarten[] biergarten;
+	Supermarkt[] supermarkt = new Supermarkt[15];
+	Biergarten[] biergarten = new Biergarten[10];
 	Brauerei[] brauerei;
 	DauerLieferant dauerLieferant;
 	Einmaliger_Lieferant einmaligerLieferant;
@@ -16,6 +16,9 @@ public class Simulation {
 				anzSpieler = anzSpieler + 1;
 			}
 		}
+		
+		brauerei = new Brauerei[anzSpieler];
+		spieler = new Spieler[anzSpieler];
 		
 		int[] posX = {5, 10, 15, 5, 10, 15, 5, 10, 15, 5, 10, 15, 5, 10, 15 };
 		int[] posY = {5, 5, 5, 10, 10, 10, 15, 15, 15, 20, 20, 20, 25, 25, 25};
@@ -42,9 +45,21 @@ public class Simulation {
 		einmaligerLieferant = new Einmaliger_Lieferant("FreshField GmbH");
 		
 		for(int i = 0; i < anzSpieler; i++){
-			spieler[i] = new Spieler(spielerName[i], supermarkt, biergarten, brauerei,
-					 dauerLieferant, einmaligerLieferant);
+			spieler[i] = new Spieler(spielerName[i], supermarkt, biergarten, brauerei, dauerLieferant, einmaligerLieferant);
 		}
+		
+		for(int i=0; i<10; i++){
+			biergarten[i].setSpieler(spieler);
+		}
+	
+	}
+	
+	public Biergarten[] getBiergaerten(){
+		return biergarten;
+	}
+	
+	public Spieler[] getSpieler(){
+		return spieler;
 	}
 
 }

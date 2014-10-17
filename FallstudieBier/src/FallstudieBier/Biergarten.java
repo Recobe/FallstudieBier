@@ -5,12 +5,14 @@ public class Biergarten extends Standort{
 	private int kapazitaet;
 	private int preis;
 	private int id;
+
 	
 	public Biergarten(int kapazität, int preis,  int pos_x, int pos_y, String name, int id){
 		super(pos_x, pos_y, name);
 		this.preis = preis;
 		this.kapazitaet = kapazität;
 		this.id = id;
+		
 	}
 
 	public void ausschreiben(){
@@ -20,7 +22,7 @@ public class Biergarten extends Standort{
 	}
 	
 	public void auswerten(){
-		int gewinnerID;
+		int gewinnerID = 10;
 		int angebot = 0;
 		for(int i=0; i < spieler.length; i++){
 			if(angebot > spieler[i].getBiergartenAngebot()){

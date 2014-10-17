@@ -14,7 +14,7 @@ public class Spieler {
 	private Brauerei[] brauerei;
 	private DauerLieferant dauerLieferant;
 	private Einmaliger_Lieferant einmaligerLieferant;
-	private Skilltree[] skilltree; 
+	private Skilltree[] skilltree = new Skilltree[3]; 
 	
 	private int aktBiergartenID = 10;
 	private int preisBiergarten = 0;
@@ -69,6 +69,7 @@ public class Spieler {
 
 	public void biergartenAusschreibung(String name2, int preis, int id) {
 		// TODO Auto-generated method stub
+		System.out.println(name2 +  " " + preis + " " + id);
 		//Weitergeben an GUI!
 		aktBiergartenID = id;
 		preisBiergarten = preis;
