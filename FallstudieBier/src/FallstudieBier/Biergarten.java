@@ -5,6 +5,7 @@ public class Biergarten extends Standort{
 	private int kapazitaet;
 	private int preis;
 	private int id;
+	private int laufzeit = 0;
 
 	
 	public Biergarten(int kapazität, int preis,  int pos_x, int pos_y, String name, int id){
@@ -31,10 +32,12 @@ public class Biergarten extends Standort{
 					angebot = spieler[i].getBiergartenAngebot();
 				}
 			}
+			spieler[i].resetBiergartenAngebot();
 		}
 		if(gewinnerID != 10){
 			System.out.println(gewinnerID);
 			spieler[gewinnerID].zuschlag(5, gewinnerID, preis);
+			laufzeit = 12;
 		}
 	}
 	
@@ -46,6 +49,9 @@ public class Biergarten extends Standort{
 		this.kapazitaet = kapazitaet;
 	}
 	
+	public void minusLaufzeit(){
+		laufzeit--;
+	}
 	
 	
 }

@@ -16,9 +16,9 @@ public class Spieler {
 	private Einmaliger_Lieferant einmaligerLieferant;
 	private Skilltree[] skilltree = new Skilltree[3]; 
 	
-	private int aktBiergartenID = 10;
-	private int preisBiergarten = 0;
-	private int angebotBiergarten = 9999999;
+
+	private int angebotBiergarten = 0;
+	private int angebotSupermarkt = 0;
 	
 	public Spieler(String pName, Supermarkt[] supermarkt, Biergarten[] biergarten, Brauerei[] brauerei,
 				DauerLieferant dauerLieferant,	Einmaliger_Lieferant einmaligerLieferant){
@@ -65,21 +65,20 @@ public class Spieler {
 			}
 	}
 	
-	public void angebot_machen(){
-		
-	}
 
 	public void biergartenAusschreibung(String name2, int preis, int id) {
 		// TODO Auto-generated method stub
 		System.out.println(name2 +  " " + preis + " " + id);
 		//Weitergeben an GUI!
-		aktBiergartenID = id;
-		preisBiergarten = preis;
 	}
 
 	public int getBiergartenAngebot() {
 		// TODO Auto-generated method stub
 		return angebotBiergarten;
+	}
+	
+	public void resetBiergartenAngebot(){
+		angebotBiergarten = 0;
 	}
 	
 	public void setAnbgebotBiergarten(int pAngebot){
@@ -95,6 +94,10 @@ public class Spieler {
 	
 	public float getKontostand(){
 		return kontostand;
+	}
+	
+	public void supermarktAusschreibung(){
+		
 	}
 
 }
