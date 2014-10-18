@@ -5,9 +5,18 @@ public class Biergarten extends Standort{
 	private int kapazitaet;
 	private int preis;
 	private int id;
-	private int laufzeit = 0;
+	//private int laufzeit = 0;
+	boolean vergeben = false;
 
 	
+	public boolean isVergeben() {
+		return vergeben;
+	}
+
+	public void setVergeben(boolean vergeben) {
+		this.vergeben = vergeben;
+	}
+
 	public Biergarten(int kapazität, int preis,  int pos_x, int pos_y, String name, int id){
 		super(pos_x, pos_y, name);
 		this.preis = preis;
@@ -43,8 +52,8 @@ public class Biergarten extends Standort{
 		}
 		if(gewinnerID != 10){
 			System.out.println(gewinnerID);
-			spieler[gewinnerID].zuschlagBiergarten(5, gewinnerID, preis, angebot);
-			laufzeit = 12;
+			spieler[gewinnerID].zuschlagBiergarten(5, gewinnerID, preis, angebot, this);
+			vergeben = true;
 		}
 	}
 	
@@ -56,9 +65,7 @@ public class Biergarten extends Standort{
 		this.kapazitaet = kapazitaet;
 	}
 	
-	public void minusLaufzeit(){
-		laufzeit--;
-	}
+
 	
 	
 }

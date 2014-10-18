@@ -1,5 +1,8 @@
 package FallstudieBier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Spieler {
 	private String name;
@@ -7,8 +10,8 @@ public class Spieler {
 	private int umsatz_ges;
 	private float kontostand;
 	private boolean ist_am_zug;
-	private int flaschenProZug = 0;
-	private float kostenProZug = 0;
+	//private int flaschenProZug = 0;
+	//private float kostenProZug = 0;
 
 	private Lager meinLager;
 	private Supermarkt[] supermarkt;
@@ -17,6 +20,7 @@ public class Spieler {
 	private DauerLieferant dauerLieferant;
 	private Einmaliger_Lieferant einmaligerLieferant;
 	private Skilltree[] skilltree = new Skilltree[3]; 
+	private List<Vertrag> vertraege = new ArrayList<Vertrag>();
 	
 
 	private int angebotBiergarten = 0;
@@ -94,11 +98,13 @@ public class Spieler {
 		angebotBiergarten = pAngebot;
 	}
 
-	public void zuschlagBiergarten(int i, int ID, int preis, int flaschenProZug) {
+	public void zuschlagBiergarten(int i, int ID, int preis, int flaschenProZug, Biergarten bierg) {
 		// TODO Auto-generated method stub
 		brauerei[ID].erhoeheRange(i);
 		kontostand = kontostand - preis;
-		this.flaschenProZug += flaschenProZug;
+		//this.flaschenProZug += flaschenProZug;
+		Vertrag vertrag = new Vertrag(flaschenProZug, 0, "Biergarten", this, bierg, null);
+		vertraege.add(vertrag);
 	}
 //___________________________________________________________________________________	
 
@@ -120,10 +126,12 @@ public class Spieler {
 		angebotSupermarkt = pAngebot;
 	}
 
-	public void zuschlagSupermarkt(int i, int kosten) {
+	public void zuschlagSupermarkt(int i, int kosten, Supermarkt superm) {
 		// TODO Auto-generated method stub
-		flaschenProZug = flaschenProZug + i;
-		kostenProZug = kostenProZug - kosten;
+		//flaschenProZug = flaschenProZug + i;
+		//kostenProZug = kostenProZug - kosten;
+		Vertrag vertrag = new Vertrag(i, -kosten, "Biergarten", this, null, superm);
+		vertraege.add(vertrag);
 	}
 //_____________________________________________________________________________________
 
@@ -164,14 +172,7 @@ public class Spieler {
 	public Lager getLager(){
 		return meinLager;
 	}
-	
-	public float getKostenProZug(){
-		return kostenProZug;
-	}
-	
-	public int getFlaschenProZug(){
-		return flaschenProZug;
-	}
+
 	
 	public float getKontostand(){
 		return kontostand;
@@ -192,5 +193,46 @@ public class Spieler {
 	public int getRohstoffe(){
 		return meinLager.getRohstoffe();
 	}
+	
+	public int getBier(){
+		return meinLager.getBier();
+	}
+
+	public List<Vertrag> getVertraege() {
+		return vertraege;
+	}
+
+	public void vertragErfuellen() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < vertraege.size(); i++) {
+			Vertrag tmp = vertraege.get(i);
+			if(tmp.getLaufzeit() != 0){
+				if(tmp.getFlaschenProZug() < getBier() && tmp.getKostenProZug() < kontostand){
+					kontostand -= tmp.getKostenProZug();
+					einlagern(- tmp.getFlaschenProZug(), "Bier");
+					tmp.setLaufzeit(tmp.getLaufzeit()-1);
+				}
+				else{
+					tmp.setLaufzeit(0);
+					if(tmp.getBiergarten() != null){
+						tmp.getBiergarten().setVergeben(false);
+					}
+					else{
+						tmp.getSupermarkt().setVergeben(false);
+					}
+				}
+			}
+			else{
+				tmp.setLaufzeit(0);
+				if(tmp.getBiergarten() != null){
+					tmp.getBiergarten().setVergeben(false);
+				}
+				else{
+					tmp.getSupermarkt().setVergeben(false);
+				}
+			}
+		}
+	}
+
 		
 }

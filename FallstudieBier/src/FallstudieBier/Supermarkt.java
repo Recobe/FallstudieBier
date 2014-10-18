@@ -4,6 +4,7 @@ public class Supermarkt extends Standort{
 
 	private int kaufkraft;
 	private float maxpreis;
+	boolean vergeben = false;
 	
 	public Supermarkt(int kaufkraft, float maxpreis, int pos_x, int pos_y, String name){
 		super(pos_x, pos_y, name);
@@ -53,7 +54,18 @@ public class Supermarkt extends Standort{
 		}
 		if(gewinnerID != 10){
 			System.out.println("Das Supermarkt-Angebot geht an: " + gewinnerID);
-			spieler[gewinnerID].zuschlagSupermarkt(kaufkraft, angebot);
+			spieler[gewinnerID].zuschlagSupermarkt(kaufkraft, angebot, this);
+			vergeben = true;
 		}
+	}
+
+	public void setVergeben(boolean b) {
+		// TODO Auto-generated method stub
+		vergeben = b;
+	}
+
+	public boolean isVergeben() {
+		// TODO Auto-generated method stub
+		return vergeben;
 	}
 }

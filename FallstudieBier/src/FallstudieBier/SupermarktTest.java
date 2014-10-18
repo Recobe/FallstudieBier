@@ -2,6 +2,9 @@ package FallstudieBier;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class SupermarktTest {
@@ -17,6 +20,8 @@ public class SupermarktTest {
 		Supermarkt[] supermarkt = new Supermarkt[15];
 		Spieler[] spieler = new Spieler[2];
 		Brauerei[] brauerei = new Brauerei[2];
+		List<Vertrag> vertraege0 = new ArrayList<Vertrag>();
+		List<Vertrag> vertraege1 = new ArrayList<Vertrag>();
 		
 		Simulation sim = new Simulation();
 		
@@ -24,10 +29,7 @@ public class SupermarktTest {
 		supermarkt = sim.getSupermarkt();
 		spieler = sim.getSpieler();
 		
-		//Ausgabe vor Änderung
-		System.out.println("Spieler0: " + spieler[0].getKostenProZug() + " " + spieler[0].getFlaschenProZug());
-		System.out.println("Spieler1: " + spieler[1].getKostenProZug() + " " + spieler[1].getFlaschenProZug());
-		//____________________________________________________________________
+
 		
 		supermarkt[sID].ausschreiben();
 		
@@ -36,9 +38,22 @@ public class SupermarktTest {
 		
 		supermarkt[sID].auswerten();
 		
+		vertraege0 = spieler[0].getVertraege();
+		vertraege1 = spieler[1].getVertraege();
+		
 		//Ergebnisse
-		System.out.println("Spieler0: " + spieler[0].getKostenProZug() + " " + spieler[0].getFlaschenProZug());
-		System.out.println("Spieler1: " + spieler[1].getKostenProZug() + " " + spieler[1].getFlaschenProZug());
+		//System.out.println("Spieler0: " + spieler[0].getKostenProZug() + " " + spieler[0].getFlaschenProZug());
+		//System.out.println("Spieler1: " + spieler[1].getKostenProZug() + " " + spieler[1].getFlaschenProZug());
+		for (int i = 0; i < vertraege0.size(); i++) {
+			Vertrag tmp = vertraege0.get(i);
+			System.out.println(tmp.getFlaschenProZug());
+			System.out.println(tmp.getKostenProZug());
+		}
+		for (int i = 0; i < vertraege1.size(); i++) {
+			Vertrag tmp = vertraege1.get(i);
+			System.out.println(tmp.getFlaschenProZug());
+			System.out.println(tmp.getKostenProZug());
+		}
 		//____________________________________________________________________
 		
 	}

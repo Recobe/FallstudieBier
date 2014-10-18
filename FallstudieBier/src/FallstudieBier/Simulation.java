@@ -1,7 +1,10 @@
 package FallstudieBier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Simulation {
-	int month;
+	int month = 8;
 	Supermarkt[] supermarkt = new Supermarkt[15];
 	Biergarten[] biergarten = new Biergarten[10];
 	Brauerei[] brauerei;
@@ -62,6 +65,39 @@ public class Simulation {
 	
 	public void naechsteRunde(){
 	//Muss noch implementiert werden... Ich hab keine Lust mehr^^
+		if(month == 12){
+			month = 1;
+		}
+		else{
+			month++;
+		}
+		
+		for (int i = 0; i < anzSpieler; i++) {
+			brauerei[i].herstellen();
+		}
+		
+		for (int i = 0; i < anzSpieler; i++) {
+			spieler[i].vertragErfuellen();
+		}
+		
+		for (int i = 0; i < biergarten.length; i++) {
+			if((int)(Math.random()*21) == 20 && biergarten[i].isVergeben() == false){
+				biergarten[i].ausschreiben();
+			}
+		}	
+		
+		for (int i = 0; i < supermarkt.length; i++) {
+			if((int)(Math.random()*21) == 20 && supermarkt[i].isVergeben() == false){
+				supermarkt[i].ausschreiben();
+			}
+		}
+		
+		if((int)(Math.random()*3) == 2 ){
+				einmaligerLieferant.ausschreiben();
+		}
+		
+		
+		//Ich hoffe ich habe hier nichts vergessen :D
 	}
 	
 	public Biergarten[] getBiergaerten(){

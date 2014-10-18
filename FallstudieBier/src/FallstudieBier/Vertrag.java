@@ -3,18 +3,48 @@ package FallstudieBier;
 public class Vertrag {
 
 	private int laufzeit;
-	private int absatzmenge;
-	private float preisMtl;
-	private float preisEinml;
-	private String sorte;
+	private int flaschenProZug;
+	private float kostenProZug;
+	private String typ;
+	private Spieler spieler;
+	private Biergarten biergarten;
+	private Supermarkt supermarkt;
 	
-	public Vertrag(int laufzeit, int absatzmenge, float preisMtl, float preisEinml, String sorte){
-		this.laufzeit = laufzeit;
-		this.absatzmenge = absatzmenge;
-		this.preisMtl = preisMtl;
-		this.preisEinml = preisEinml;
-		this.sorte = sorte;
+	
+	public Vertrag( int absatzmenge, float preisMtl,  String sorte, Spieler spieler, Biergarten biergarten, Supermarkt supermarkt){
+		this.laufzeit = 12;
+		this.flaschenProZug = absatzmenge;
+		this.kostenProZug = preisMtl;
+		this.typ = sorte;
+		this.spieler = spieler;
+		this.biergarten = biergarten;
+		this.supermarkt = supermarkt;
 	}
+	
+	public Spieler getSpieler() {
+		return spieler;
+	}
+
+	public void setSpieler(Spieler spieler) {
+		this.spieler = spieler;
+	}
+
+	public Biergarten getBiergarten() {
+		return biergarten;
+	}
+
+	public void setBiergarten(Biergarten biergarten) {
+		this.biergarten = biergarten;
+	}
+
+	public Supermarkt getSupermarkt() {
+		return supermarkt;
+	}
+
+	public void setSupermarkt(Supermarkt supermarkt) {
+		this.supermarkt = supermarkt;
+	}
+
 
 	public int getLaufzeit() {
 		return laufzeit;
@@ -24,36 +54,29 @@ public class Vertrag {
 		this.laufzeit = laufzeit;
 	}
 
-	public int getAbsatzmenge() {
-		return absatzmenge;
+	public int getFlaschenProZug() {
+		return flaschenProZug;
 	}
 
-	public void setAbsatzmenge(int absatzmenge) {
-		this.absatzmenge = absatzmenge;
+	public void setFlaschenProZug(int absatzmenge) {
+		this.flaschenProZug = absatzmenge;
 	}
 
-	public float getPreisMtl() {
-		return preisMtl;
+	public float getKostenProZug() {
+		return kostenProZug;
 	}
 
-	public void setPreisMtl(float preisMtl) {
-		this.preisMtl = preisMtl;
+	public void setKostenProZug(float preisMtl) {
+		this.kostenProZug = preisMtl;
 	}
 
-	public float getPreisEinml() {
-		return preisEinml;
+
+	public String getTyp() {
+		return typ;
 	}
 
-	public void setPreisEinml(float preisEinml) {
-		this.preisEinml = preisEinml;
-	}
-
-	public String getSorte() {
-		return sorte;
-	}
-
-	public void setSorte(String sorte) {
-		this.sorte = sorte;
+	public void setTyp(String sorte) {
+		this.typ = sorte;
 	}
 	
 	

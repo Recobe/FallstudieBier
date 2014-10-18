@@ -14,8 +14,15 @@ public class Brauerei extends Standort {
 	}
 
 	public void herstellen(){
-		spieler.einlagern(-kapazitaet, "Rohstoffe");
-		spieler.einlagern(kapazitaet, "Bier");		
+		if(spieler.getRohstoffe() < kapazitaet){
+			spieler.einlagern(spieler.getRohstoffe(), "Rohstoffe");
+			spieler.einlagern(spieler.getRohstoffe(), "Bier");
+			//Hier Meldung an GUI, dass Rohstoffe nicht vorhanden!
+		}
+		else{
+			spieler.einlagern(-kapazitaet, "Rohstoffe");
+			spieler.einlagern(kapazitaet, "Bier");	
+		}
 	}
 	
 	public int getKapazität() {
