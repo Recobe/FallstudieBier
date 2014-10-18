@@ -83,12 +83,14 @@ public class Simulation {
 		for (int i = 0; i < biergarten.length; i++) {
 			if((int)(Math.random()*21) == 20 && biergarten[i].isVergeben() == false){
 				biergarten[i].ausschreiben();
+				break;
 			}
 		}	
 		
 		for (int i = 0; i < supermarkt.length; i++) {
 			if((int)(Math.random()*21) == 20 && supermarkt[i].isVergeben() == false){
 				supermarkt[i].ausschreiben();
+				break;
 			}
 		}
 		
