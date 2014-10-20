@@ -98,6 +98,8 @@ public class Simulation {
 				einmaligerLieferant.ausschreiben();
 		}
 		
+		dauerLieferant.pricing(month);
+		
 		
 		//Ich hoffe ich habe hier nichts vergessen :D
 	}
