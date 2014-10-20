@@ -1,11 +1,11 @@
 package FallstudieBier;
 
-public class Einmaliger_Lieferant extends Lieferant {
+public class EinmaligerLieferant extends Lieferant {
 
 	private int kapazitaet;
 	Spieler[] spieler = new Spieler[4];
 
-	public Einmaliger_Lieferant(String name) {
+	public EinmaligerLieferant(String name) {
 		super(name);		
 	}
 	

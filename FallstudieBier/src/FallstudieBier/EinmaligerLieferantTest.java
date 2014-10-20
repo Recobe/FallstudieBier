@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class Einmaliger_LieferantTest {
+public class EinmaligerLieferantTest {
 
 	@Test
 	public void test() {
@@ -14,7 +14,7 @@ public class Einmaliger_LieferantTest {
 		int angebot1 = 400;
 		int bID = 1;
 	//______________________________________________________
-		Einmaliger_Lieferant einmaligerL;
+		EinmaligerLieferant einmaligerL;
 		Spieler[] spieler = new Spieler[2];
 		Brauerei[] brauerei = new Brauerei[2];
 		

@@ -9,7 +9,7 @@ public class Simulation {
 	Biergarten[] biergarten = new Biergarten[10];
 	Brauerei[] brauerei;
 	DauerLieferant dauerLieferant;
-	Einmaliger_Lieferant einmaligerLieferant;
+	EinmaligerLieferant einmaligerLieferant;
 	int anzSpieler = 0;
 	Spieler[] spieler;
 	
@@ -45,7 +45,7 @@ public class Simulation {
 		
 		dauerLieferant = new DauerLieferant("Hopfen Hopp AG");
 		
-		einmaligerLieferant = new Einmaliger_Lieferant("FreshField GmbH");
+		einmaligerLieferant = new EinmaligerLieferant("FreshField GmbH");
 		
 		for(int i = 0; i < anzSpieler; i++){
 			spieler[i] = new Spieler(spielerName[i], supermarkt, biergarten, brauerei, dauerLieferant, einmaligerLieferant);
@@ -127,7 +127,7 @@ public class Simulation {
 		return spieler[i].getLager();
 	}
 	
-	public Einmaliger_Lieferant getEinmaligerL(){
+	public EinmaligerLieferant getEinmaligerL(){
 		return einmaligerLieferant;
 	}
 

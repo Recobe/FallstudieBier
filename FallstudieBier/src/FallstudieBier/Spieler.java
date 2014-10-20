@@ -18,7 +18,7 @@ public class Spieler {
 	private Biergarten[] biergarten;
 	private Brauerei[] brauerei;
 	private DauerLieferant dauerLieferant;
-	private Einmaliger_Lieferant einmaligerLieferant;
+	private EinmaligerLieferant einmaligerLieferant;
 	private Skilltree[] skilltree = new Skilltree[3]; 
 	private List<Vertrag> vertraege = new ArrayList<Vertrag>();
 	
@@ -29,7 +29,7 @@ public class Spieler {
 	
 //Konstruktor	
 	public Spieler(String pName, Supermarkt[] supermarkt, Biergarten[] biergarten, Brauerei[] brauerei,
-				DauerLieferant dauerLieferant,	Einmaliger_Lieferant einmaligerLieferant){
+				DauerLieferant dauerLieferant,	EinmaligerLieferant einmaligerLieferant){
 		
 
 		
