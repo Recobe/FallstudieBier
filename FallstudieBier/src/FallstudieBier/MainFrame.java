@@ -72,7 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 474, Short.MAX_VALUE)
         );
 
-        tabbedPane.addTab("Ãœbersicht", null, uebersicht, "Ãœbersicht");
+        tabbedPane.addTab("Übersicht", null, uebersicht, "Übersicht");
 
         herstellung.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Herstellung", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
@@ -144,7 +144,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         festpreis.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        beschriftung_1.setText("Preis: 500â‚¬ pro Tonne");
+        beschriftung_1.setText("Preis: 500€ pro Tonne");
 
         beschriftung_2.setText("Kauf von");
 
@@ -153,7 +153,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         beschriftung_4.setText("Tonnen");
 
-        beschriftung_5.setText("Preis fÃ¼r 0 Tonnen: 0,00â‚¬");
+        beschriftung_5.setText("Preis für 0 Tonnen: 0,00€");
 
         jetzt_kaufen.setText("Jetzt kaufen");
 
@@ -284,7 +284,7 @@ public class MainFrame extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("\n 1\tOskar\t50.000â‚¬\n\n 2\tChristian\t45.000â‚¬\n\n 3\tDominic\t22.321â‚¬\n\n 4\tJan\t12.002â‚¬");
+        jTextArea1.setText("\n 1\tOskar\t50.000€\n\n 2\tChristian\t45.000€\n\n 3\tDominic\t22.321€\n\n 4\tJan\t12.002€");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout spielerrankingLayout = new javax.swing.GroupLayout(spielerranking);
