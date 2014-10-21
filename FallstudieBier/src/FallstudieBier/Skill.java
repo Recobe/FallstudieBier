@@ -24,6 +24,10 @@ public class Skill {
 
 	}
 
+	public int getPreis() {
+		return Preis;
+	}
+
 	public String getAttribut() {
 		return Attribut;
 	}

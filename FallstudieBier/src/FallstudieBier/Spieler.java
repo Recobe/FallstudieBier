@@ -80,7 +80,9 @@ public class Spieler {
 	}
 //______________________________________________________________________________
 	
-//Biergarten_______________________________________________________________________
+
+
+	//Biergarten_______________________________________________________________________
 	public void biergartenAusschreibung(String name2, int preis, int id) {
 		// TODO Auto-generated method stub
 		System.out.println(name2 +  " " + preis + " " + id);
@@ -176,6 +178,9 @@ public class Spieler {
 	
 	public float getKontostand(){
 		return kontostand;
+	}
+	public void setKontostand(float kontostand) {
+		this.kontostand = kontostand;
 	}
 	
 	public int getX(int i){
