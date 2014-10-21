@@ -53,20 +53,19 @@ public class Skill {
 
 	}
 
-	public String setSkill(boolean skillen, int cash) {
+	public int setSkill(boolean skillen, int cash) {
 		if (checkSkilled() == true) {
 			if (skillen == true) {
 				if (cash >= Preis) {
 					geskilled = true;
-					String Rückgabe = String.valueOf(Preis);
-					return Rückgabe;
+					return Preis;
 				}
 				else{
-					return "Nicht genug Geld";
+					return -1; //Nicht genug Cash
 				}
 			}
 		}
-		return "Parent nicht geskilled";
+		return -2; //Parent nicht geskilled
 		
 	}
 
