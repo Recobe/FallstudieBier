@@ -61,7 +61,7 @@ public class Skill {
 					return Preis;
 				}
 				else{
-					return -1; //Nicht genug Cash
+					return -1; //Nicht genug cash
 				}
 			}
 		}
