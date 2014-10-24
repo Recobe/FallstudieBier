@@ -1,0 +1,17 @@
+Unter den Buttons müssen folgende Kommandos MANUELL eingetragen werden, das heißt die Skillnamen müssen fest rein programmiert werden. Die Spielerobjekte müssen jedoch dynamisch erfasst werden.
+
+// Oskar klickt auf den ersten Skill im 2. Skilltree
+oskar.getSkilltree()[1].setSkill( 5, oskar.getKontostand(), oskar); //Überall wo Oskar steht muss die Gui sich den Spieler selber holen, alles andere ist fest einprogrammiert
+
+Die Skilltrees sind folgendermaßen aufgebaut:
+
+				Skill 1
+					|
+				Skill 2
+					|
+				  /   \
+			Skill 3   Skill 4
+			
+Der 1. Skilltree hat die Skills 1-4
+Der 2. Skilltree hat die Skills 5-8
+Der 3. Skilltree hat die Skills 9-12
