@@ -31,7 +31,7 @@ public class Skill {
 	public String getAttribut() {
 		return Attribut;
 	}
-
+	
 	public boolean checkSkilled() {
 		if (parent == null) {
 			return true;
@@ -48,11 +48,10 @@ public class Skill {
 
 	public Skill addChild(String Name, String Attribut, int Preis, double Wert, int nr) {
 		Skill skill = new Skill(Skilltree, this, Name, Attribut, Preis, Wert, nr);
-		id += 1;
 		return skill;
 
 	}
-
+	
 	public int setSkill(boolean skillen, int cash) {
 		if (checkSkilled() == true) {
 			if (skillen == true) {
@@ -68,8 +67,8 @@ public class Skill {
 		return -2; //Parent nicht geskilled
 		
 	}
+		
 	
-
 	public boolean isGeskilled() {
 		return geskilled;
 	}

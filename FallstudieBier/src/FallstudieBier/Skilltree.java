@@ -12,19 +12,28 @@ public class Skilltree {
 
 		if (Name.equals("Herstellung")) {
 			Skills [1] = wurzel.addChild("besserer Prozess",
-					"Kosten senken", 200, 10, 1);
-			// weitere Skills hinzufügen; Müssen wir bereden wie die konkret
-			// heißen
+					"Kosten senken", 100, 10, 1);
+			Skills [2] = Skills[1].addChild("Skill2", "Kosten senken", 200, 20, 2);
+			Skills [3] = Skills[2].addChild("Skill3", "Kosten senken", 300, 30, 3);
+			Skills [4] = Skills[2].addChild("Skill4", "Kosten senken", 400, 30, 4);
+			
 		}
 
 		if (Name.equals("Forschung")) {
 			Skills[5]  = wurzel.addChild("Kessel verbessern",
-					"Kapazität erhöhen", 100, 500, 5);
+					"Kapazität erhöhen", 100, 10, 5);
+			Skills[6] = Skills[5].addChild("Skill6", "Kapazität erhöhen", 200, 20, 6);
+			Skills[7] = Skills[6].addChild("Skill7", "Kapazität erhöhen", 300, 30, 7);
+			Skills[8] = Skills[6].addChild("Skill8", "Kapazität erhöhen", 400, 40, 8);
+			
 		}
 		if (Name.equals("Marketing")) {
-			Skill cSkill1 = wurzel.addChild("Plakate",
-					"Range erhöhen", 1, 10, 9);
-			Skill cSkill2 = cSkill1.addChild("Beispiel", "Beispiel", 100, 100, 10);
+			Skills[9] = wurzel.addChild("Plakate",
+					"Range erhöhen", 100, 1, 9);
+			Skills[10] = Skills[9].addChild("Skill10", "Range erhöhen", 200, 1, 10);
+			Skills[11] = Skills[10].addChild("Skill11", "Range erhöhen", 300, 2, 11);
+			Skills[12] = Skills[10].addChild("Skill12", "Range erhöhen", 300, 2, 12);
+			
 		}
 		
 
