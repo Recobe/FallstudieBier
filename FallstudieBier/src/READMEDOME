@@ -15,3 +15,10 @@ Die Skilltrees sind folgendermaßen aufgebaut:
 Der 1. Skilltree hat die Skills 1-4
 Der 2. Skilltree hat die Skills 5-8
 Der 3. Skilltree hat die Skills 9-12
+
+//Oskar klickt auf den ersten Skill im 1. Skilltree
+oskar.getSkilltree()[0].setSkill( 1, oskar.getKontostand(), oskar);
+//Jan klickt auf den 2. Skill im 1. Skilltree
+jan.getSkilltree()[1].setSkill( 2, jan.getKontostand(), jan);
+
+GUI kann sich Name, Attribut und Preis etc über Skilltree[SkilltreeId].Skills[Skillid].getName() etc holen
