@@ -12,6 +12,10 @@ public class Simulation {
 	EinmaligerLieferant einmaligerLieferant;
 	int anzSpieler = 0;
 	Spieler[] spieler;
+	int biergartenNr = 100;
+	int supermarktNr = 100;
+	boolean eLieferant = false;
+	int[] reihenfolge;
 	
 	public void start(String[] spielerName){
 		for (int i = 0; i < 4; i++) {
@@ -48,7 +52,7 @@ public class Simulation {
 		einmaligerLieferant = new EinmaligerLieferant("FreshField GmbH");
 		
 		for(int i = 0; i < anzSpieler; i++){
-			spieler[i] = new Spieler(spielerName[i], supermarkt, biergarten, brauerei, dauerLieferant, einmaligerLieferant);
+			spieler[i] = new Spieler(spielerName[i], supermarkt, biergarten, brauerei, dauerLieferant, einmaligerLieferant, i);
 		}
 		
 		for(int i=0; i<10; i++){
@@ -60,17 +64,27 @@ public class Simulation {
 		}
 		
 		einmaligerLieferant.setSpieler(spieler);
+		
+		for(int i = 0; i < anzSpieler; i++){
+			brauerei[i].setSpieler(spieler[i]);
+		}
 	
 	}
 	
 	public void naechsteRunde(){
 	//Muss noch implementiert werden... Ich hab keine Lust mehr^^
+		biergartenNr = 100;
+		supermarktNr = 100;
+		eLieferant = false;
+		
 		if(month == 12){
 			month = 1;
 		}
 		else{
 			month++;
 		}
+		
+		dauerLieferant.pricing(month);
 		
 		for (int i = 0; i < anzSpieler; i++) {
 			brauerei[i].herstellen();
@@ -83,6 +97,7 @@ public class Simulation {
 		for (int i = 0; i < biergarten.length; i++) {
 			if((int)(Math.random()*21) == 20 && biergarten[i].isVergeben() == false){
 				biergarten[i].ausschreiben();
+				biergartenNr = i;
 				break;
 			}
 		}	
@@ -90,12 +105,15 @@ public class Simulation {
 		for (int i = 0; i < supermarkt.length; i++) {
 			if((int)(Math.random()*21) == 20 && supermarkt[i].isVergeben() == false){
 				supermarkt[i].ausschreiben();
+				supermarktNr = i;
 				break;
 			}
 		}
 		
 		if((int)(Math.random()*3) == 2 ){
+				einmaligerLieferant.setKapazitaet((int)(Math.random()*1500)+500);
 				einmaligerLieferant.ausschreiben();
+				eLieferant = true;
 		}
 		
 		dauerLieferant.pricing(month);
@@ -104,8 +122,66 @@ public class Simulation {
 		//Ich hoffe ich habe hier nichts vergessen :D
 	}
 	
+	public void reihenfolge() {
+		switch(anzSpieler) {
+		case 2:
+			reihenfolge = new int[2];
+			reihenfolge[0] = 1;
+			reihenfolge[1] = 2;
+					if(spieler[0].getKontostand() > spieler[1].getKontostand()) {
+						int c = reihenfolge[0];
+						reihenfolge[0] = reihenfolge[1];
+						reihenfolge[1] = c;
+					}
+			break;
+		/*case 3:
+			reihenfolge = new int[3];
+			reihenfolge[0] = 1;
+			reihenfolge[1] = 2;
+			reihenfolge[2] = 3;
+
+			for(int i = 1; i < reihenfolge.length; i++) {
+				for(int j = 0; j < reihenfolge.length-1; j++) {
+					if(spieler[j].getKontostand() > spieler[j+1].getKontostand()) {
+						int c = reihenfolge[j];
+						reihenfolge[j] = reihenfolge[j+1];
+						reihenfolge[j+1] = c;
+					}
+				}
+			}
+		case 4:
+			reihenfolge = new int[4];
+			reihenfolge[0] = 1;
+			reihenfolge[1] = 2;
+			reihenfolge[2] = 3;
+			reihenfolge[3] = 4;
+
+			for(int i = 1; i < reihenfolge.length; i++) {
+				for(int j = 0; j < reihenfolge.length-1; j++) {
+					if(spieler[j].getKontostand() > spieler[j+1].getKontostand()) {
+						int c = reihenfolge[j];
+						reihenfolge[j] = reihenfolge[j+1];
+						reihenfolge[j+1] = c;
+					}
+				}
+			}*/
+		}
+	}
+	
 	public Biergarten[] getBiergaerten(){
 		return biergarten;
+	}
+	
+	public boolean isELieferant(){
+		return eLieferant;
+	}
+	
+	public int getBiergartenNr() {
+		return biergartenNr;
+	}
+	
+	public int getSupermarktNr() {
+		return supermarktNr;
 	}
 	
 	public Spieler[] getSpieler(){
@@ -131,6 +207,14 @@ public class Simulation {
 	
 	public EinmaligerLieferant getEinmaligerL(){
 		return einmaligerLieferant;
+	}
+	
+	public int getAnzahlSpieler() {
+		return anzSpieler;
+	}
+	
+	public int getMonat() {
+		return month;
 	}
 
 }

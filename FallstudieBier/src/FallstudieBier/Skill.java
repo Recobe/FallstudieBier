@@ -68,6 +68,7 @@ public class Skill {
 		return -2; //Parent nicht geskilled
 		
 	}
+	
 
 	public boolean isGeskilled() {
 		return geskilled;

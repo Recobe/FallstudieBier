@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public class Spieler {
+	private int id;
 	private String name;
 	private int umsatz_akt;
 	private int umsatz_ges;
@@ -24,12 +25,12 @@ public class Spieler {
 	
 
 	private int angebotBiergarten = 0;
-	private int angebotSupermarkt = 0;
+	private int angebotSupermarkt = 99999999;
 	private int angebotELieferant = 0;
 	
 //Konstruktor	
 	public Spieler(String pName, Supermarkt[] supermarkt, Biergarten[] biergarten, Brauerei[] brauerei,
-				DauerLieferant dauerLieferant,	EinmaligerLieferant einmaligerLieferant){
+				DauerLieferant dauerLieferant,	EinmaligerLieferant einmaligerLieferant, int id){
 		
 
 		
@@ -46,11 +47,14 @@ public class Spieler {
 		skilltree[2] = new Skilltree("Marketing");
 		
 		kontostand = 6000;
+		this.id = id;
 		
 	}
 //_____________________________________________________________________________________	
 
-//Einlagern	
+
+
+	//Einlagern	
 	public void einlagern(int pMenge, String pTyp){
 			if(pTyp.equals("Bier")){
 				if(meinLager.getKapazitaet() > meinLager.getBier() + meinLager.getRohstoffe() + pMenge){
@@ -80,9 +84,7 @@ public class Spieler {
 	}
 //______________________________________________________________________________
 	
-
-
-	//Biergarten_______________________________________________________________________
+//Biergarten_______________________________________________________________________
 	public void biergartenAusschreibung(String name2, int preis, int id) {
 		// TODO Auto-generated method stub
 		System.out.println(name2 +  " " + preis + " " + id);
@@ -107,6 +109,7 @@ public class Spieler {
 		//this.flaschenProZug += flaschenProZug;
 		Vertrag vertrag = new Vertrag(flaschenProZug, 0, "Biergarten", this, bierg, null);
 		vertraege.add(vertrag);
+		System.out.println("Ich Spieler " + name + " habe gewonnen"  );
 	}
 //___________________________________________________________________________________	
 
@@ -170,19 +173,67 @@ public class Spieler {
 	}
 //________________________________________________________________________
 	
+	// Skillen
+	public void skillenRange(int wert){
+		brauerei[id].erhoeheRange(wert);
+	}
+	
+	public void skillenKapa(int wert){
+		brauerei[id].setKapazität(brauerei[id].getKapazität() + wert);
+	}
+	
+	public void skillKosten(int wert){
+		for (int i = 0; i < vertraege.size(); i++) {
+			vertraege.get(i).setKostenProZug(vertraege.get(i).getKostenProZug() - wert);
+		}
+	}
+	
 //Get und Set
 	public Lager getLager(){
 		return meinLager;
 	}
-
 	
+	public int getBrauereiKap(int i){
+		return brauerei[i].getKapazität();
+	}
+	
+	public int getFlaschenProZug(){
+		int flaschenProZug = 0;
+		for (int i = 0; i < vertraege.size(); i++) {
+			Vertrag tmp = vertraege.get(i);
+			flaschenProZug += tmp.getFlaschenProZug();
+		}
+		return flaschenProZug;
+	}
+	
+	public int getKostenProZug(){
+		int kostenProZug = 0;
+		for (int i = 0; i < vertraege.size(); i++) {
+			Vertrag tmp = vertraege.get(i);
+			kostenProZug += tmp.getKostenProZug();
+		}
+		return kostenProZug;
+	}
+	
+		
+	public Skilltree[] getSkilltree() {
+		return skilltree;
+	}
+
+
+
 	public float getKontostand(){
 		return kontostand;
 	}
+	
 	public void setKontostand(float kontostand) {
 		this.kontostand = kontostand;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
 	public int getX(int i){
 		return brauerei[i].getPox_x();
 	}
@@ -202,7 +253,15 @@ public class Spieler {
 	public int getBier(){
 		return meinLager.getBier();
 	}
+	
+	public int getLagerKap(){
+		return meinLager.getKapazitaet();
+	}
 
+	public String getName() {
+		return name;
+	}
+	
 	public List<Vertrag> getVertraege() {
 		return vertraege;
 	}

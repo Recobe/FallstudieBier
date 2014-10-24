@@ -16,6 +16,10 @@ public class Biergarten extends Standort{
 	public void setVergeben(boolean vergeben) {
 		this.vergeben = vergeben;
 	}
+	
+	public int getPreis() {
+		return preis;
+	}
 
 	public Biergarten(int kapazität, int preis,  int pos_x, int pos_y, String name, int id){
 		super(pos_x, pos_y, name);

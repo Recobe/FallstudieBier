@@ -34,7 +34,7 @@ public class DauerLieferant extends Lieferant {
 
 	@Override
 	public String toString() {
-		return "DauerLieferant []";
+		return name + "," + marktPreis;
 	}
 
 }

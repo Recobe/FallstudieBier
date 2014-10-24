@@ -3,6 +3,7 @@ package FallstudieBier;
 public class Skilltree {
 	// public Skill wurzel;
 	public String Name = "";
+	private Skill[] Skills = new Skill[12];
 
 	public Skilltree(String Name) {
 		this.Name = Name;
@@ -10,25 +11,28 @@ public class Skilltree {
 		wurzel.setSkill(true, 0);
 
 		if (Name.equals("Herstellung")) {
-			Skill skill1 = wurzel.addChild("besserer Prozess",
-					"Profit erhöhen", 200, 10, 2);
+			Skills [1] = wurzel.addChild("besserer Prozess",
+					"Kosten senken", 200, 10, 1);
 			// weitere Skills hinzufügen; Müssen wir bereden wie die konkret
 			// heißen
 		}
 
 		if (Name.equals("Forschung")) {
-			Skill skill1 = wurzel.addChild("Kessel verbessern",
-					"Kapazität erhöhen", 100, 500, 1);
+			Skills[5]  = wurzel.addChild("Kessel verbessern",
+					"Kapazität erhöhen", 100, 500, 5);
 		}
 		if (Name.equals("Marketing")) {
-			Skill skill1 = wurzel.addChild("besserer Geschmack",
-					"Profit erhöhen", 200, 10, 2);
+			Skill cSkill1 = wurzel.addChild("Plakate",
+					"Range erhöhen", 1, 10, 9);
+			Skill cSkill2 = cSkill1.addChild("Beispiel", "Beispiel", 100, 100, 10);
 		}
+		
 
 	}
 
-	private void setSkill(Skill skill, float Kontostand, Spieler spieler) {
-		int prüf = skill.setSkill(true, (int) Kontostand);
+	public void setSkill(int id, float Kontostand, Spieler spieler) {
+		
+		int prüf = Skills[id].setSkill(true, (int) Kontostand);
 		if (prüf == -1) {
 			System.out.println("Nicht genug Cash"); // Ausgabe an GUI
 		} else if (prüf == -2) {
@@ -36,24 +40,19 @@ public class Skilltree {
 		} else {
 
 			spieler.setKontostand(spieler.getKontostand() - prüf);
-			switch (skill.getAttribut()) {
-			case "incKap":
-				//Kapazität erhöhen
+			switch (Skills[id].getAttribut()) {
+			case "Kapazität erhöhen":
+				spieler.skillenKapa((int)Skills[id].getWert());
 				break;
-			case "kapKo":
-				//Kapazität und Kosten erhöhen
+			case "Range erhöhen":
+				spieler.skillenRange((int)Skills[id].getWert());
 				break;
-			case "incRange":
-				//Range erhöhen
+			case "Kosten senken":
+				spieler.skillKosten((int)Skills[id].getWert());
 				break;
-			case "incFKap":
-				//Kapazität erhöhen
-				break;
-			case "decCost":
-				//Kosten senken
-				break;
-			
 			}
+			
+			
 
 		}
 
