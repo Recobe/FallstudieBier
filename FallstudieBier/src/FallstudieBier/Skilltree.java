@@ -3,7 +3,7 @@ package FallstudieBier;
 public class Skilltree {
 	// public Skill wurzel;
 	public String Name = "";
-	private Skill[] Skills = new Skill[12];
+	private Skill[] Skills = new Skill[13];
 
 	public Skilltree(String Name) {
 		this.Name = Name;
